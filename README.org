@@ -1,4 +1,4 @@
-#+TITLE: cl-font-lock layer
+#+TITLE: cl-font-lock
 
 * Table of Contents                                        :TOC_4_gh:noexport:
 - [[#description][Description]]
@@ -7,8 +7,7 @@
   - [[#spacemacs][Spacemacs]]
 
 * Description
-Add pretty colors to common-lisp; from
-https://github.com/sheepduke/emacs-settings/blob/master/settings/d2-dev-lisp.el
+Add pretty colors to common-lisp; from [[https://github.com/sheepduke/emacs-settings/blob/master/settings/d2-dev-lisp.el][emacs-settings]]
 with modifications (convert =lambda= to =λ=.)
 * Install
 ** Not spacemacs
