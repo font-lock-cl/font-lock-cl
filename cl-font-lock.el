@@ -1,4 +1,4 @@
-;;; cl-font-lock.el --- pretty Common Lisp font locking -*- lexical-binding: t; -*-
+;;; cl-font-lock.el --- Pretty Common Lisp font locking -*- lexical-binding: t; -*-
 ;; Copyright (C) 2019 Spenser Truex
 ;; Author: Spenser Truex <web@spensertruex.com>
 ;; Created: 2019-06-16
@@ -233,8 +233,12 @@
 (defvar cl-font-lock--character-names
   '("newline" "space" "rubout" "page" "tab" "backspace" "return" "linefeed"))
 
-(defmacro add-regexes (fn mode &rest symbol-face)
-  "Expand to calls to font-lock."
+(defmacro cl-font-lock-add-regexes (fn mode &rest symbol-face)
+  "Expand to more than one call to font-lock.
+Argument FN is the function used to send off the regex. Commonly
+`font-lock-add-keywords' or `font-lock-remove-keywords'. Argument
+MODE is the mode where the regexes are sent.
+Optional argument SYMBOL-FACE dotted-pair of (regex-var . font-face)."
   `(progn
      ,@(cl-loop for s in symbol-face
                 collect
@@ -243,7 +247,7 @@
                   `((,(regexp-opt ,(car s) 'symbols)
                      . ,(cdr ',s)))))))
 
-(add-regexes
+(cl-font-lock-add-regexes
  font-lock-add-keywords
  lisp-mode
  (cl-font-lock-built-in--functions . font-lock-function-name-face)
