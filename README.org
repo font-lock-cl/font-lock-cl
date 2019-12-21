@@ -3,12 +3,17 @@
 * Table of Contents                                        :TOC_4_gh:noexport:
 - [[#description][Description]]
 - [[#install][Install]]
+  - [[#not-spacemacs][Not spacemacs]]
+  - [[#spacemacs][Spacemacs]]
 
 * Description
 Add pretty colors to common-lisp; from
 https://github.com/sheepduke/emacs-settings/blob/master/settings/d2-dev-lisp.el
 with modifications (convert =lambda= to =λ=.)
 * Install
+** Not spacemacs
+Just put it in your =.emacs=, =init.el=, or wherever the emacs init file is.
+** Spacemacs
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
 add =cl-font-lock= to the existing =dotspacemacs-configuration-layers= list in this
 file.
