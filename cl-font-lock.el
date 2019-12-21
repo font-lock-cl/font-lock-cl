@@ -1,5 +1,29 @@
+;;; cl-font-lock.el --- pretty Common Lisp font locking -*- lexical-binding: t; -*-
+;; Copyright (C) 2019 Spenser Truex
+;; Author: Spenser Truex <web@spensertruex.com>
+;; Created: 2019-06-16
+;; Version: 0.3.0
+;; Package-Requires: ((emacs "24.5"))
+;; Keywords: lisp wp files convenience
+;; URL: https://github.com/equwal/coleslaw/
+;; Homepage: https://spensertruex.com/coleslaw
+;; This file is not part of GNU Emacs, but you want to use  GNU Emacs to run it.
+;; This file is very free software.
+;; License:
+;; Licensed with the GNU GPL v3 see:
+;; <https://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; Highlight all the symbols in the Common Lisp ANSI Standard, and prettify
+;; lambda to display the greek letter.
+;;
+;; Adds font-lock regexes to lisp-mode.
+
+;;; Code:
+
 (require 'cl-lib)
-(defvar *common-lisp-built-in-functions*
+(defvar cl-font-lock-built-in--functions
   '("+" "-" "/" "/=" "<" "<=" "=" ">" ">=" "*" "1-" "1+" "abs" "acons" "acos"
     "acosh" "add-method" "adjoin" "adjustable-array-p" "adjust-array"
     "allocate-instance" "alpha-char-p" "alphanumericp" "and" "append" "apply"
@@ -133,7 +157,7 @@
     "write" "write-byte" "write-char" "write-line" "write-sequence"
     "write-string" "write-to-string" "yes-or-no-p" "y-or-n-p" "zerop"))
 
-(defvar *common-lisp-built-in-variables*
+(defvar cl-font-lock-built-in--variables
   '("//" "///" "\\*load-pathname\\*" "\\*print-pprint-dispatch\\*"
     "\\*break-on-signals\\*" "\\*load-print\\*" "\\*print-pprint-dispatch\\*"
     "\\*break-on-signals\\*" "\\*load-truename\\*" "\\*print-pretty\\*"
@@ -179,7 +203,7 @@
     "short-float-negative-epsilon" "single-float-epsilon"
     "single-float-negative-epsilon" "pi"))
 
-(defvar *common-lisp-built-in-types*
+(defvar cl-font-lock-built-in--types
   '("arithmetic-error" "array" "base-char" "base-string" "bignum" "bit-vector"
     "boolean" "broadcast-stream" "built-in-class" "cell-error" "class"
     "compiled-function" "concatenated-stream" "condition" "control-error"
@@ -200,31 +224,34 @@
     "synonym-stream" "two-way-stream" "type-error" "unbound-slot"
     "unbound-variable" "undefined-function" "unsigned-byte" "warning"))
 
-(defvar *common-lisp-built-in-symbols*
+(defvar cl-font-lock-built-in--symbols
   '("compilation-speed" "compiler-macro" "debug" "declaration" "dynamic-extent"
     "ftype" "ignorable" "ignore" "inline" "make-method" "next-method-p"
     "notinline" "optimize" "otherwise" "safety" "satisfies" "space" "special"
     "speed" "structure" "type"))
 
-(defvar *common-lisp-character-names*
+(defvar cl-font-lock--character-names
   '("newline" "space" "rubout" "page" "tab" "backspace" "return" "linefeed"))
 
-(defmacro add-regexes (mode &rest symbol-face)
+(defmacro add-regexes (fn mode &rest symbol-face)
+  "Expand to calls to font-lock."
   `(progn
      ,@(cl-loop for s in symbol-face
                 collect
-                `(font-lock-add-keywords
+                `(,fn
                   ',mode
                   `((,(regexp-opt ,(car s) 'symbols)
                      . ,(cdr ',s)))))))
-(add-regexes
- lisp-mode
- (*common-lisp-built-in-functions* . font-lock-function-name-face)
- (*common-lisp-built-in-variables* . font-lock-variable-name-face)
- (*common-lisp-built-in-types* . font-lock-type-face)
- (*common-lisp-built-in-symbols* . font-lock-builtin-face)
- (*common-lisp-character-names* . font-lock-variable-name-face))
 
-;;;; pretty-symbols
-(add-to-list 'prettify-symbols-alist '("lambda" . ?\λ))
-(add-hook 'lisp-mode-hook 'prettify-symbols-mode)
+(add-regexes
+ font-lock-add-keywords
+ lisp-mode
+ (cl-font-lock-built-in--functions . font-lock-function-name-face)
+ (cl-font-lock-built-in--variables . font-lock-variable-name-face)
+ (cl-font-lock-built-in--types . font-lock-type-face)
+ (cl-font-lock-built-in--symbols . font-lock-builtin-face)
+ (cl-font-lock--character-names . font-lock-variable-name-face))
+
+(provide 'cl-font-lock)
+
+;;; cl-font-lock.el ends here
