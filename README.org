@@ -1,6 +1,11 @@
 #+TITLE: cl-font-lock
 
 [[file:img/screenshot.png]]
+#+begin_quote
+Does that really help? Looks like a christmas tree.
+
+-- stassats
+#+end_quote
 * Table of Contents                                        :TOC_4_gh:noexport:
 - [[#description][Description]]
 - [[#install][Install]]
