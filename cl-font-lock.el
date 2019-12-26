@@ -9,8 +9,8 @@
 ;; Homepage: https://spensertruex.com/coleslaw
 ;; This file is not part of GNU Emacs, but you want to use  GNU Emacs to run it.
 ;; This file is very free software.
-;; License:
-;; Licensed with the GNU GPL v3 see:
+;; License: Unlicense
+;; Licensed with the Unlicense see:
 ;; <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
