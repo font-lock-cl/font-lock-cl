@@ -14,3 +14,5 @@ Does that really help? Looks like a christmas tree.
 Add pretty colors to common-lisp, from [[https://github.com/sheepduke/emacs-settings/blob/master/settings/d2-dev-lisp.el][emacs-settings]].
 * Install
 Install from [[https://melpa.org][Melpa]]!
+* Known Issues
+- There is no context, so sometimes certain symbols will be highlighted unexpectedly. Consider =(return nil)= vs. =#\return=.
