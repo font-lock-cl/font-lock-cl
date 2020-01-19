@@ -16,4 +16,4 @@ Add pretty colors to common-lisp, from [[https://github.com/sheepduke/emacs-sett
 Install from [[https://melpa.org][Melpa]]!
 * Known Issues
 - There is no context, so sometimes certain symbols will be highlighted unexpectedly. Consider =(return nil)= vs. =#\return=.
-- The name cl-font-lock is similar to [cl-lib-highlight](https://github.com/skeeto/cl-lib-highlight), a library for elisp font locking.
+- The name cl-font-lock is similar to [[https://github.com/skeeto/cl-lib-highlight][cl-lib-highlight]], a library for elisp font locking.
