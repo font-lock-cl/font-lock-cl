@@ -113,7 +113,7 @@
     "make-concatenated-stream" "make-condition" "make-dispatch-macro-character"
     "make-echo-stream" "make-hash-table" "make-instance"
     "make-instances-obsolete" "make-list" "make-load-form"
-    "make-load-form-saving-slots" "make-package" "make-pathname"
+    "make-load-form-saving-slots" "make-method" "make-package" "make-pathname"
     "make-random-state" "make-sequence" "make-string"
     "make-string-input-stream" "make-string-output-stream" "make-symbol"
     "make-synonym-stream" "make-two-way-stream" "makunbound" "map" "mapc"
@@ -122,9 +122,9 @@
     "merge-pathnames" "method-combination-error" "method-qualifiers" "min"
     "minusp" "mismatch" "mod" "muffle-warning" "multiple-value-call"
     "multiple-value-list" "multiple-value-setq" "name-char" "namestring"
-    "nbutlast" "nconc" "nintersection" "ninth" "no-applicable-method"
-    "no-next-method" "not" "notany" "notevery" "nreconc" "nreverse"
-    "nset-difference" "nset-exclusive-or" "nstring-capitalize"
+    "nbutlast" "nconc" "next-method-p" "nintersection" "ninth"
+    "no-applicable-method" "no-next-method" "not" "notany" "notevery" "nreconc"
+    "nreverse" "nset-difference" "nset-exclusive-or" "nstring-capitalize"
     "nstring-downcase" "nstring-upcase" "nsublis" "nsubst" "nsubst-if"
     "nsubst-if-not" "nsubstitute" "nsubstitute-if" "nsubstitute-if-not" "nth"
     "nthcdr" "nth-value" "null" "numberp" "numerator" "nunion" "oddp" "open"
@@ -250,9 +250,8 @@
 
 (defvar cl-font-lock-built-in--symbols
   '("compilation-speed" "compiler-macro" "debug" "declaration" "dynamic-extent"
-    "ftype" "ignorable" "ignore" "inline" "make-method" "next-method-p"
-    "notinline" "optimize" "otherwise" "safety" "satisfies" "space" "special"
-    "speed" "structure" "type"))
+    "ftype" "ignorable" "ignore" "inline" "notinline" "optimize" "otherwise"
+    "safety" "satisfies" "space" "special" "speed" "structure" "type"))
 
 (defvar cl-font-lock--character-names
   '("newline" "space" "rubout" "page" "tab" "backspace" "return" "linefeed"))
