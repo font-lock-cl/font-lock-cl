@@ -1,4 +1,4 @@
-#+TITLE: cl-font-lock
+#+TITLE: font-lock-cl
 
 [[file:img/screenshot.png]]
 #+begin_quote
@@ -16,4 +16,8 @@ Add pretty colors to common-lisp, from [[https://github.com/sheepduke/emacs-sett
 Install from [[https://melpa.org][Melpa]]!
 * Known Issues
 - There is no context, so sometimes certain symbols will be highlighted unexpectedly. Consider =(return nil)= vs. =#\return=.
-- The name cl-font-lock is similar to [[https://github.com/skeeto/cl-lib-highlight][cl-lib-highlight]], a library for elisp font locking.
+* Contributions guidelines
+- Consider making an issue. It will be automatically closed when a linked pull request is merged.
+- Use meaningful commit messages that follow good practices.
+- Write a descriptive pull request that describes what it does, why it should be added, and what testing has been done.
+- The pull request body can be  put in a tag (`git tag -s tag-name your-branch`) for git history purposes, then added to the git web interface also.
