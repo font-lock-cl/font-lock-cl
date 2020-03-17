@@ -1,4 +1,4 @@
-;;; cl-font-lock.el --- Pretty Common Lisp font locking -*- lexical-binding: t; -*-
+;;; font-lock-cl.el --- Pretty Common Lisp font locking -*- lexical-binding: t; -*-
 ;; Copyright (C) 2019 Yue Daian
 ;; Author: Yue Daian
 ;; Maintainer: Spenser Truex <web@spensertruex.com>
@@ -6,8 +6,8 @@
 ;; Version: 0.3.0
 ;; Package-Requires: ((emacs "24.5"))
 ;; Keywords: lisp wp files convenience
-;; URL: https://github.com/equwal/cl-font-lock
-;; Homepage: https://github.com/equwal/cl-font-lock 
+;; URL: https://github.com/font-lock-cl/font-lock-cl
+;; Homepage: https://github.com/font-lock-cl/font-lock-cl
 ;; This file is not part of GNU Emacs, but you want to use  GNU Emacs to run it.
 ;; This file is very free software.
 
@@ -47,7 +47,7 @@
 ;;; Code:
 
 (require 'cl-lib)
-(defvar cl-font-lock-built-in--functions
+(defvar font-lock-cl-built-in--functions
   '("+" "-" "/" "/=" "<" "<=" "=" ">" ">=" "*" "1-" "1+" "abs" "acons" "acos"
     "acosh" "add-method" "adjoin" "adjustable-array-p" "adjust-array"
     "allocate-instance" "alpha-char-p" "alphanumericp" "and" "append" "apply"
@@ -181,7 +181,7 @@
     "write" "write-byte" "write-char" "write-line" "write-sequence"
     "write-string" "write-to-string" "yes-or-no-p" "y-or-n-p" "zerop"))
 
-(defvar cl-font-lock-built-in--variables
+(defvar font-lock-cl-built-in--variables
   '("//" "///" "\\*load-pathname\\*" "\\*print-pprint-dispatch\\*"
     "\\*break-on-signals\\*" "\\*load-print\\*" "\\*print-pprint-dispatch\\*"
     "\\*break-on-signals\\*" "\\*load-truename\\*" "\\*print-pretty\\*"
@@ -227,7 +227,7 @@
     "short-float-negative-epsilon" "single-float-epsilon"
     "single-float-negative-epsilon" "pi"))
 
-(defvar cl-font-lock-built-in--types
+(defvar font-lock-cl-built-in--types
   '("arithmetic-error" "array" "base-char" "base-string" "bignum" "bit-vector"
     "boolean" "broadcast-stream" "built-in-class" "cell-error" "class"
     "compiled-function" "concatenated-stream" "condition" "control-error"
@@ -248,15 +248,15 @@
     "synonym-stream" "two-way-stream" "type-error" "unbound-slot"
     "unbound-variable" "undefined-function" "unsigned-byte" "warning"))
 
-(defvar cl-font-lock-built-in--symbols
+(defvar font-lock-cl-built-in--symbols
   '("compilation-speed" "compiler-macro" "debug" "declaration" "dynamic-extent"
     "ftype" "ignorable" "ignore" "inline" "notinline" "optimize" "otherwise"
     "safety" "satisfies" "space" "special" "speed" "structure" "type"))
 
-(defvar cl-font-lock--character-names
+(defvar font-lock-cl--character-names
   '("newline" "space" "rubout" "page" "tab" "backspace" "return" "linefeed"))
 
-(defmacro cl-font-lock-add-regexes (fn mode &rest symbol-face)
+(defmacro font-lock-cl-add-regexes (fn mode &rest symbol-face)
   "Expand to more than one call to font-lock.
 Argument FN is the function used to send off the regex. Commonly
 `font-lock-add-keywords' or `font-lock-remove-keywords'. Argument
@@ -270,15 +270,15 @@ Optional argument SYMBOL-FACE dotted-pair of (regex-var . font-face)."
                   `((,(regexp-opt ,(car s) 'symbols)
                      . ,(cdr ',s)))))))
 
-(cl-font-lock-add-regexes
+(font-lock-cl-add-regexes
  font-lock-add-keywords
  lisp-mode
- (cl-font-lock-built-in--functions . font-lock-function-name-face)
- (cl-font-lock-built-in--variables . font-lock-variable-name-face)
- (cl-font-lock-built-in--types . font-lock-type-face)
- (cl-font-lock-built-in--symbols . font-lock-builtin-face)
- (cl-font-lock--character-names . font-lock-variable-name-face))
+ (font-lock-cl-built-in--functions . font-lock-function-name-face)
+ (font-lock-cl-built-in--variables . font-lock-variable-name-face)
+ (font-lock-cl-built-in--types . font-lock-type-face)
+ (font-lock-cl-built-in--symbols . font-lock-builtin-face)
+ (font-lock-cl--character-names . font-lock-variable-name-face))
 
-(provide 'cl-font-lock)
+(provide 'font-lock-cl)
 
-;;; cl-font-lock.el ends here
+;;; font-lock-cl.el ends here
