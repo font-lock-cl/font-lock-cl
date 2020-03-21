@@ -12,10 +12,32 @@ Does that really help? Looks like a christmas tree.
 
 * Description
 Add pretty colors to common-lisp, from [[https://github.com/sheepduke/emacs-settings/blob/master/settings/d2-dev-lisp.el][emacs-settings]].
+
 * Install
 Install from [[https://melpa.org][Melpa]]!
+
 * Known Issues
 - There is no context, so sometimes certain symbols will be highlighted unexpectedly. Consider =(return nil)= vs. =#\return=.
+
+* Other Notes
+The following code is an sample of how the symbols were extracted.
+
+Some manual work was taken to tune the result.
+
+#+BEGIN_SRC common-lisp
+(defvar *functions* nil)
+(defvar *symbols* nil)
+(defvar *types* nil)
+
+(let ((pack (find-package :common-lisp)))
+  (do-all-symbols (sym)
+    (cond
+      ((not (eql pack (symbol-package sym))) nil)
+      ((fboundp sym) (pushnew sym *functions*))
+      ((find-class sym nil) (pushnew sym *types*))
+      (t (pushnew sym *symbols*)))))
+#+END_SRC
+
 * Contributions guidelines
 - Consider making an issue. It will be automatically closed when a linked pull request is merged.
 - Use meaningful commit messages that follow good practices.
